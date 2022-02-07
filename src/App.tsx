@@ -1,5 +1,6 @@
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
+import { UserProvider } from "./context/UserContext";
 import AppRoutes from "./routes";
 
 const customTheme = {
@@ -17,7 +18,9 @@ const App = () => {
   return (
     <div className="App">
       <ChakraProvider theme={theme}>
-        <AppRoutes />
+        <UserProvider>
+          <AppRoutes />
+        </UserProvider>
       </ChakraProvider>
     </div>
   );
