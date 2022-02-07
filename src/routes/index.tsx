@@ -18,7 +18,7 @@ const Login = lazy(() => import("../pages/Login"));
 const Movies = lazy(() => import("../pages/Movies"));
 
 const AppRoutes = () => {
-  const { user } = useUser();
+  const { user, jwt } = useUser();
 
   return (
     <Router>

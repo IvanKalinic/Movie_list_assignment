@@ -26,7 +26,7 @@ const Login = () => {
     defaultValues: defaultLoginValues,
   });
 
-  const { setUser, setJwt, jwt } = useUser();
+  const { setUser, setJwt } = useUser();
   const navigate = useNavigate();
 
   const handleLogin = async (loginForm: LoginForm) => {

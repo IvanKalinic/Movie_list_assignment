@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, createElement, useContext, useMemo } from "react";
 import Axios, { AxiosInstance } from "axios";
 import { useUser } from "./UserContext";
 
@@ -22,10 +22,11 @@ export const AxiosProvider = ({
   const auth = useMemo(() => {
     const axios = Axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
+    console.log({ user, jwt });
     //request interceptor
     axios.interceptors.request.use((config) => {
       if (user && config.headers) {
-        console.log(jwt);
+        console.log("Here");
         config.headers.Authorization = `Bearer ${jwt}`;
       }
 

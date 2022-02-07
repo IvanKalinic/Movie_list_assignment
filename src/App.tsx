@@ -18,9 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <ChakraProvider theme={theme}>
-        <UserProvider>
-          <AppRoutes />
-        </UserProvider>
+        <AppRoutes />
       </ChakraProvider>
     </div>
   );
