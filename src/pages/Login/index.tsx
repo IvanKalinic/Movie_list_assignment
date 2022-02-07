@@ -9,6 +9,7 @@ import { LoginForm } from "../../types/loginForm.type";
 const defaultLoginValues = {
   email: "",
   password: "",
+  checked: false,
 };
 
 const Login = () => {
@@ -25,6 +26,7 @@ const Login = () => {
   const handleLogin = async (loginForm: LoginForm) => {
     console.log(loginForm);
   };
+
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
       <LoginWrapper>
@@ -54,12 +56,13 @@ const Login = () => {
         <Flex
           alignItems="center"
           justifyContent="space-around"
-          style={{ width: "55%" }}
+          style={{ width: "45%" }}
         >
           <Checkbox
             backgroundColor="#224957"
             borderColor="#224957"
             borderRadius="10px"
+            {...register("checked")}
           />
           <Text>Remember me</Text>
         </Flex>
