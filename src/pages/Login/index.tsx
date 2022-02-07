@@ -5,6 +5,7 @@ import { LoginWrapper } from "../styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../schemas/loginSchema";
 import { LoginForm } from "../../types/loginForm.type";
+import { useUser } from "../../context/UserContext";
 
 const defaultLoginValues = {
   email: "",
@@ -23,8 +24,20 @@ const Login = () => {
     defaultValues: defaultLoginValues,
   });
 
+  const { setUser } = useUser();
+
   const handleLogin = async (loginForm: LoginForm) => {
-    console.log(loginForm);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        identifier: loginForm.email,
+        password: loginForm.password,
+      }),
+    };
+    await fetch(`${process.env.REACT_APP_LOGIN_URL}`, requestOptions)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return (
@@ -48,6 +61,7 @@ const Login = () => {
         <TextInput
           title="password"
           registerName="password"
+          type="password"
           placeholder="Password"
           register={register}
           errors={errors}
