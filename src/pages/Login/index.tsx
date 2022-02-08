@@ -35,9 +35,14 @@ const Login = () => {
         `${process.env.REACT_APP_BASE_URL}/auth/local`,
         { identifier: loginForm.email, password: loginForm.password }
       );
-      setJwt(response.data.jwt);
+
       if (response.data.user) {
-        setUser(response.data.user);
+        if (loginForm.checked) {
+          setUser({ user: response.data.user, jwt: response.data.jwt });
+        } else {
+          setUser(response.data.user);
+          setJwt(response.data.jwt);
+        }
         navigate("/movies");
       }
     } catch (err) {

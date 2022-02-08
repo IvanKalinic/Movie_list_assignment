@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import { AxiosProvider } from "./context/AxiosContext";
 import { UserProvider } from "./context/UserContext";
+import { MoviesProvider } from "./context/MoviesContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <AxiosProvider>
-        <App />
+        <MoviesProvider>
+          <App />
+        </MoviesProvider>
       </AxiosProvider>
     </UserProvider>
   </React.StrictMode>,

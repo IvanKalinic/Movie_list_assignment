@@ -23,3 +23,13 @@ export const CustomInput = styled.div`
   color: white;
   margin-bottom: 2rem;
 `;
+
+export const LinkWrapper = styled.div`
+  position: absolute;
+  right: 8rem;
+  top: 2rem;
+
+  &:hover {
+    color: #3b4c66;
+  }
+`;

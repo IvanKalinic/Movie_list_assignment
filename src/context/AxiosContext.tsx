@@ -22,12 +22,11 @@ export const AxiosProvider = ({
   const auth = useMemo(() => {
     const axios = Axios.create({ baseURL: process.env.REACT_APP_BASE_URL });
 
-    console.log({ user, jwt });
     //request interceptor
     axios.interceptors.request.use((config) => {
       if (user && config.headers) {
-        console.log("Here");
-        config.headers.Authorization = `Bearer ${jwt}`;
+        console.log(jwt);
+        config.headers.Authorization = `Bearer ${jwt || user.jwt}`;
       }
 
       return config;

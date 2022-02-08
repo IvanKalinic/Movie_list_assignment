@@ -1,6 +1,5 @@
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
-import { UserProvider } from "./context/UserContext";
 import AppRoutes from "./routes";
 
 const customTheme = {
@@ -9,7 +8,6 @@ const customTheme = {
     heading: "Montserrat, sans-serif",
     mono: "Montserrat, sans-serif",
   },
-  weight: 400,
 };
 
 const theme = extendTheme({ customTheme });
