@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { MovieItemContainer, MovieImage, PositionLeft } from "../styles";
 
 interface Props {
@@ -20,15 +20,10 @@ const MovieItem = (props: Props) => {
           alignItems="start"
           height="4rem"
         >
-          <Heading
-            style={{
-              fontSize: "1rem",
-              marginTop: "1.8rem",
-            }}
-          >
+          <Text fontSize="1.1rem" mt="1.8rem" fontWeight="500">
             {name}
-          </Heading>
-          <Text style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>
+          </Text>
+          <Text fontSize="0.7rem" mt="0.5rem">
             {year}
           </Text>
         </Flex>

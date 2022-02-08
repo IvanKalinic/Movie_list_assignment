@@ -53,9 +53,9 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
       <LoginWrapper>
-        <Heading style={{ fontSize: "4rem", marginBottom: "4rem" }}>
+        <Text fontSize="4rem" mb="2rem" fontWeight="600">
           Sign in
-        </Heading>
+        </Text>
         <TextInput
           title="email"
           registerName="email"
@@ -80,7 +80,9 @@ const Login = () => {
         <Flex
           alignItems="center"
           justifyContent="space-around"
-          style={{ width: "45%" }}
+          w="50%"
+          mt="-0.5rem"
+          mb="0.5rem"
         >
           <Checkbox
             backgroundColor="#224957"

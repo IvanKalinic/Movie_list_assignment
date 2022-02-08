@@ -24,10 +24,6 @@ const Movies = () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/movies?populate=*`
-        // {
-        //   data: { name: "Wall-E", publicationYear: 2008 },
-        //   files: { poster: "sazhdas" },
-        // }
       );
       if (response) {
         setMovies(response.data.data);
@@ -56,7 +52,9 @@ const Movies = () => {
       <LinkWrapper>
         <Link to="/logout">
           <Flex alignItems="center" justifyContent="space-between">
-            <Text mr="1rem">Logout</Text>
+            <Text mr="1rem" fontWeight="600">
+              Logout
+            </Text>
             <Logout />
           </Flex>
         </Link>

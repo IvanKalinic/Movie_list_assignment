@@ -51,6 +51,6 @@ export const MovieImage = styled.img`
 
 export const PositionLeft = styled.div`
   position: relative;
-  left: -4rem;
+  left: -30%;
   bottom: 1rem;
 `;
