@@ -4,7 +4,7 @@ import { TextInput } from "../../components/Input";
 import { LoginWrapper } from "../styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../schemas/loginSchema";
-import { LoginForm } from "../../types/loginForm.type";
+import { LoginForm } from "../../types";
 import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";

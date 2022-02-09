@@ -16,6 +16,7 @@ const Logout = lazy(() => import("../components/Logout"));
 const HomePage = lazy(() => import("../pages/HomePage"));
 const Login = lazy(() => import("../pages/Login"));
 const Movies = lazy(() => import("../pages/Movies"));
+const AddMovie = lazy(() => import("../pages/AddMovie"));
 
 const AppRoutes = () => {
   const { user, jwt } = useUser();
@@ -24,8 +25,9 @@ const AppRoutes = () => {
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={!user ? <Login /> : <Movies />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/add" element={<AddMovie />} />
           {/* <Route path="/" element={user ? <HomePage/> : <Login/>}/>
           <Route path="/login" element={<Login/>}/> */}
           <Route path="/logout" element={<Logout />} />

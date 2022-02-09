@@ -17,11 +17,12 @@ export const CustomInput = styled.div`
   background-color: #224957;
   outline: none;
   border: none;
-  width: 18.75rem;
   height: 2.8125rem;
   font-size: 0.875rem;
   color: white;
   margin-bottom: 2rem;
+
+  width: ${({ resize }: { resize: boolean }) => (resize ? "60%" : "18.75rem")};
 `;
 
 export const LinkWrapper = styled.div`

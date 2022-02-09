@@ -15,7 +15,7 @@ export const TextInput = (props: Props) => {
     props;
 
   return (
-    <CustomInput>
+    <CustomInput resize={placeholder === "Publishing year" ? true : false}>
       <Input
         placeholder={placeholder}
         {...register(registerName)}

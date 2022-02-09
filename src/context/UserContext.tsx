@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../hooks";
 
 type ContextType = {
   user: any;

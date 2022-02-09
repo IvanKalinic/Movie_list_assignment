@@ -8,21 +8,26 @@ import { MoviesProvider } from "./context/MoviesContext";
 import { ChakraProvider } from "@chakra-ui/react";
 import "@fontsource/montserrat/400.css";
 import styled from "styled-components";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const AppContainer = styled.div`
   font-family: Montserrat;
 `;
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <AxiosProvider>
         <MoviesProvider>
-          <AppContainer>
-            <ChakraProvider>
-              <App />
-            </ChakraProvider>
-          </AppContainer>
+          <QueryClientProvider client={queryClient}>
+            <AppContainer>
+              <ChakraProvider>
+                <App />
+              </ChakraProvider>
+            </AppContainer>
+          </QueryClientProvider>
         </MoviesProvider>
       </AxiosProvider>
     </UserProvider>
