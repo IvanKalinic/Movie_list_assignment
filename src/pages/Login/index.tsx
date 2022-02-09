@@ -1,4 +1,4 @@
-import { Button, Checkbox, Flex, Heading, Text } from "@chakra-ui/react";
+import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { TextInput } from "../../components/Input";
 import { LoginWrapper } from "../styles";
