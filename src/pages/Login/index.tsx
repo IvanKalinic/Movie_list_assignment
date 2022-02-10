@@ -8,6 +8,7 @@ import { LoginForm } from "../../types";
 import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 const defaultLoginValues = {
   email: "",
@@ -49,6 +50,10 @@ const Login = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    reset();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(handleLogin)}>

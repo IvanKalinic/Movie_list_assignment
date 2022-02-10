@@ -9,8 +9,8 @@ type ContextType = {
   setLastPageIndex: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  image: string;
-  setImage: React.Dispatch<React.SetStateAction<string>>;
+  image: any;
+  setImage: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const MoviesContext = createContext<ContextType>({
@@ -22,7 +22,7 @@ const MoviesContext = createContext<ContextType>({
   setLastPageIndex: () => null,
   currentPage: 1,
   setCurrentPage: () => null,
-  image: "",
+  image: null,
   setImage: () => null,
 });
 
@@ -44,7 +44,7 @@ export const MoviesProvider = ({ children }: Props) => {
   const [firstPageIndex, setFirstPageIndex] = useState<number>(0);
   const [lastPageIndex, setLastPageIndex] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [image, setImage] = useState<string>("");
+  const [image, setImage] = useState<any>(null);
 
   const value = useMemo(
     () => ({

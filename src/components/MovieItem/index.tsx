@@ -1,5 +1,6 @@
 import { DeleteIcon } from "@chakra-ui/icons";
 import { Flex, Text } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MovieItemContainer,
   MovieImage,
@@ -11,18 +12,24 @@ interface Props {
   name: string;
   url: string | undefined;
   year: number;
+  id: number;
 }
 
 const MovieItem = (props: Props) => {
-  const { name, url, year } = props;
+  const { name, url, year, id } = props;
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     //delete logic
     //popup open
   };
 
+  const handleEdit = () => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
-    <MovieItemContainer>
+    <MovieItemContainer onClick={handleEdit}>
       <MovieImage src={url} alt="" />
       <PositionLeft>
         <Flex

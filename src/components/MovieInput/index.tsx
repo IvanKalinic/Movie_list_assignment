@@ -4,7 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMovies } from "../../context/MoviesContext";
-import { usePostMovie } from "../../hooks";
+import { usePostMovie, usePutMovie } from "../../hooks";
 import { movieSchema } from "../../schemas/movieSchema";
 import { MovieForm } from "../../types";
 import { TextInput } from "../Input";
@@ -14,7 +14,13 @@ const defaultMovieValues = {
   publishingYear: "",
 };
 
-const MovieInput = () => {
+interface Props {
+  edit: boolean;
+  id: string | undefined;
+}
+
+const MovieInput = (props: Props) => {
+  const { edit, id } = props;
   const {
     register,
     handleSubmit,
@@ -26,6 +32,7 @@ const MovieInput = () => {
   });
   const { image, setImage } = useMovies();
   const postMovie = usePostMovie();
+  const putMovie = usePutMovie();
   const navigate = useNavigate();
 
   const handleAddMovie = async (movieForm: MovieForm) => {
@@ -37,8 +44,11 @@ const MovieInput = () => {
     const formData = new FormData();
     formData.append("files.poster", image);
     formData.append("data", JSON.stringify(movie));
-
-    postMovie.mutate(formData);
+    if (edit) {
+      putMovie.mutate({ id, formData });
+    } else {
+      postMovie.mutate(formData);
+    }
     navigate("/movies");
   };
 
@@ -96,7 +106,7 @@ const MovieInput = () => {
           borderRadius="10px"
           height="3.375rem"
         >
-          Submit
+          {edit ? "Submit" : "Update"}
         </Button>
       </Flex>
     </form>

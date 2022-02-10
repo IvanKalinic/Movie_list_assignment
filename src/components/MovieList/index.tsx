@@ -26,8 +26,9 @@ const MovieList = (currentPage: { currentPage: number }) => {
         ({ attributes, id }: { attributes: any; id: number }) => (
           <MovieItem
             key={id}
+            id={id}
             name={attributes.name}
-            url={attributes.poster?.data}
+            url={attributes.poster.data?.attributes?.url}
             year={attributes.publicationYear}
           />
         )

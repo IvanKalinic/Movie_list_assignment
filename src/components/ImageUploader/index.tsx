@@ -2,33 +2,34 @@ import { Upload } from "../../assets/svg";
 import { Icon, Image, UploadBoxWrapper } from "../styles";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useMovies } from "../../context/MoviesContext";
 
 const ImageUploader = () => {
   const { image, setImage } = useMovies();
+  const [currentImage, setCurrentImage] = useState<string>("");
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const imageUrl = URL.createObjectURL(e.target.files[0]);
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target) {
-          setImage(String(e.target.result));
-          // setImage(imageUrl);
+          setCurrentImage(String(e.target.result));
         }
       };
-
+      setImage(e.target.files[0]);
       reader.readAsDataURL(e.target.files[0]);
     }
   };
 
   useEffect(() => {
-    setImage("");
+    setImage(null);
+    setCurrentImage("");
   }, []);
 
+  console.log(currentImage);
   return (
-    <UploadBoxWrapper image={image}>
+    <UploadBoxWrapper image={currentImage}>
       {!image ? (
         <>
           <label htmlFor="input" style={{ cursor: "pointer" }}>
@@ -58,7 +59,7 @@ const ImageUploader = () => {
               css={{ ":hover": { color: "#8c3103" } }}
             />
           </Icon>
-          <Image src={image} />
+          <Image src={currentImage} />
         </Box>
       )}
     </UploadBoxWrapper>

@@ -27,7 +27,8 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={!user ? <Login /> : <Movies />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/add" element={<AddMovie />} />
+          <Route path="/add" element={<AddMovie edit={false} />} />
+          <Route path="/edit/:id" element={<AddMovie edit={true} />} />
           {/* <Route path="/" element={user ? <HomePage/> : <Login/>}/>
           <Route path="/login" element={<Login/>}/> */}
           <Route path="/logout" element={<Logout />} />

@@ -46,7 +46,7 @@ export const AxiosProvider = ({
     );
 
     return axios;
-  }, [user]);
+  }, [user, jwt]);
   // it should have refresh token in dep.array
 
   return <AxiosContext.Provider value={auth}>{children}</AxiosContext.Provider>;

@@ -1,16 +1,22 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useAxios } from "../../context/AxiosContext";
 
-export const usePostMovie = () => {
+export const usePutMovie = () => {
   const axios = useAxios();
   const queryClient = useQueryClient();
 
-  const addMovie = async (movie: FormData) => {
+  const editMovie = async ({
+    id,
+    formData,
+  }: {
+    id: string | undefined;
+    formData: FormData;
+  }) => {
     try {
       await axios({
-        method: "post",
-        url: `${process.env.REACT_APP_MOVIES_URL}`,
-        data: movie,
+        method: "put",
+        url: `${process.env.REACT_APP_MOVIES_URL}/${id}`,
+        data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
     } catch (err) {
@@ -18,7 +24,7 @@ export const usePostMovie = () => {
     }
   };
 
-  return useMutation(addMovie, {
+  return useMutation(editMovie, {
     onError: (error) => console.log(error),
     onSuccess: async () => {
       await queryClient.invalidateQueries("fetchMovies");
