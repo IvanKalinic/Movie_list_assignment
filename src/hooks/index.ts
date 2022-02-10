@@ -1,5 +1,5 @@
 import { useLocalStorage } from "./useLocalStorage";
 
-import { usePostMovie, useGetMovies } from "./movie-hooks";
+import { usePostMovie, useGetMovies, useDeleteMovie } from "./movie-hooks";
 
-export { useLocalStorage, usePostMovie, useGetMovies };
+export { useLocalStorage, usePostMovie, useGetMovies, useDeleteMovie };

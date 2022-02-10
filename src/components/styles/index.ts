@@ -94,6 +94,14 @@ export const Icon = styled.span`
   }
 `;
 
+export const IconBottomRight = styled.span`
+  position: relative;
+  right: -8rem;
+  bottom: 2rem;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+`;
 export const UploadedImage = styled.div`
   position: relative;
 `;

@@ -2,6 +2,7 @@ import { Button, Flex } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useMovies } from "../../context/MoviesContext";
 import { usePostMovie } from "../../hooks";
 import { movieSchema } from "../../schemas/movieSchema";
@@ -25,18 +26,20 @@ const MovieInput = () => {
   });
   const { image, setImage } = useMovies();
   const postMovie = usePostMovie();
+  const navigate = useNavigate();
 
   const handleAddMovie = async (movieForm: MovieForm) => {
     const movie = {
-      data: movieForm,
-      // files: { poster: `@${image.slice(26)}` },
-      files: {
-        poster: `${image.slice(27)}`,
-      },
+      name: movieForm.title,
+      publicationYear: movieForm.publishingYear,
     };
 
-    console.log(movie);
-    postMovie.mutate(movie);
+    const formData = new FormData();
+    formData.append("files.poster", image);
+    formData.append("data", JSON.stringify(movie));
+
+    postMovie.mutate(formData);
+    navigate("/movies");
   };
 
   const handleCancel = () => {

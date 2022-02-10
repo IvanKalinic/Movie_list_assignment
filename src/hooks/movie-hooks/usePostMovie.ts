@@ -1,12 +1,11 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useAxios } from "../../context/AxiosContext";
-import { Movie } from "../../types";
 
 export const usePostMovie = () => {
   const axios = useAxios();
   const queryClient = useQueryClient();
 
-  const addMovie = async (movie: Movie) => {
+  const addMovie = async (movie: FormData) => {
     try {
       await axios.post(`${process.env.REACT_APP_MOVIES_URL}`, movie);
     } catch (err) {

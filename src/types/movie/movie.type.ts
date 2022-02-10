@@ -3,15 +3,22 @@ export type MovieForm = {
   publishingYear: string;
 };
 
+type MovieDataPayload = {
+  name: string;
+  publishingYear: number;
+};
+
 export type Movie = {
-  data: MovieForm;
+  data: MovieDataPayload;
   files: { poster: string };
 };
+
 type AttributeArray = {
   name: string;
   publicationYear: number;
   poster: { data: string | undefined };
 };
+
 type MovieItem = {
   id: number;
   attributes: AttributeArray;

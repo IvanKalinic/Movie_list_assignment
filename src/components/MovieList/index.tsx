@@ -13,6 +13,7 @@ const MovieList = (currentPage: { currentPage: number }) => {
     setMoviesOnPage(movies.slice(firstPageIndex, lastPageIndex));
   }, [currentPage]);
 
+  console.log(movies);
   return (
     <Flex
       alignItems="center"

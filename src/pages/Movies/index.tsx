@@ -20,6 +20,8 @@ interface JwtToken {
 }
 
 const Movies = () => {
+  const [totalPages, setTotalPages] = useState<number>(0);
+
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -32,9 +34,6 @@ const Movies = () => {
     setCurrentPage,
     currentPage,
   } = useMovies();
-
-  const [totalPages, setTotalPages] = useState<number>(0);
-
   const response = useGetMovies();
 
   useEffect(() => {
