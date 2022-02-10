@@ -1,14 +1,13 @@
 import { useQuery } from "react-query";
 import { useAxios } from "../../context/AxiosContext";
-import { MovieData } from "../../types";
 
-export const useGetMovies = () => {
+export const useFindOneMovie = (id: string | undefined) => {
   const axios = useAxios();
 
-  const fetchMovies = async (): Promise<MovieData | undefined> => {
+  const fetchMovie = async (id: string | undefined): Promise<any> => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_MOVIES_URL}?populate=*`
+        `${process.env.REACT_APP_MOVIES_URL}/${id}`
       );
       return data;
     } catch (err) {
@@ -16,7 +15,7 @@ export const useGetMovies = () => {
     }
   };
 
-  return useQuery("fetchMovie", async () => await fetchMovies(), {
+  return useQuery(["fetchMovie", id], async () => await fetchMovie(id), {
     onError: (error) => console.log(error),
     staleTime: Infinity,
   });

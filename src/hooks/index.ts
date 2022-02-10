@@ -5,6 +5,7 @@ import {
   useGetMovies,
   useDeleteMovie,
   usePutMovie,
+  useFindOneMovie,
 } from "./movie-hooks";
 
 export {
@@ -13,4 +14,5 @@ export {
   useGetMovies,
   useDeleteMovie,
   usePutMovie,
+  useFindOneMovie,
 };

@@ -1,10 +1,10 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMovies } from "../../context/MoviesContext";
-import { usePostMovie, usePutMovie } from "../../hooks";
+import { useFindOneMovie, usePostMovie, usePutMovie } from "../../hooks";
 import { movieSchema } from "../../schemas/movieSchema";
 import { MovieForm } from "../../types";
 import { TextInput } from "../Input";
@@ -34,6 +34,18 @@ const MovieInput = (props: Props) => {
   const postMovie = usePostMovie();
   const putMovie = usePutMovie();
   const navigate = useNavigate();
+
+  const { data } = useFindOneMovie(id);
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+      reset({
+        title: data.data.attributes.name,
+        publishingYear: data.data.attributes.publicationYear,
+      });
+    }
+  }, [id]);
 
   const handleAddMovie = async (movieForm: MovieForm) => {
     const movie = {
