@@ -105,3 +105,51 @@ export const IconBottomRight = styled.span`
 export const UploadedImage = styled.div`
   position: relative;
 `;
+
+export const SearchText = styled.input`
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 1rem;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+`;
+
+export const SearchButton = styled.a`
+  color: #092c39;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #224957;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+`;
+
+export const SearchBox = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 200%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  &:hover {
+    :nth-child(2) {
+      background: white;
+    }
+    > * {
+      &:first-child {
+        padding: 0 6px;
+        width: 15rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+`;
