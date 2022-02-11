@@ -118,7 +118,7 @@ const MovieInput = (props: Props) => {
           borderRadius="10px"
           height="3.375rem"
         >
-          {edit ? "Submit" : "Update"}
+          {!edit ? "Submit" : "Update"}
         </Button>
       </Flex>
     </form>

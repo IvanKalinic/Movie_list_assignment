@@ -133,10 +133,7 @@ export const SearchButton = styled.a`
 `;
 
 export const SearchBox = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 200%;
-  transform: translate(-50%, -50%);
+  margin-left: 12rem;
   height: 40px;
   border-radius: 20px;
   display: flex;
@@ -149,6 +146,25 @@ export const SearchBox = styled.div`
         padding: 0 6px;
         width: 15rem;
         margin-left: 1rem;
+      }
+    }
+  }
+`;
+
+export const SearchLabel = styled.label`
+  margin-right: -11.5rem;
+  margin-left: 6rem;
+`;
+
+export const SearchForm = styled.form`
+  &:hover {
+    > * {
+      &:first-child {
+        > * {
+          &:first-child {
+            display: none;
+          }
+        }
       }
     }
   }

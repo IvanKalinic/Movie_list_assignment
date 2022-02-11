@@ -16,7 +16,7 @@ export const useGetMovies = () => {
     }
   };
 
-  return useQuery("fetchMovie", async () => await fetchMovies(), {
+  return useQuery("fetchMovies", async () => await fetchMovies(), {
     onError: (error) => console.log(error),
     staleTime: Infinity,
   });

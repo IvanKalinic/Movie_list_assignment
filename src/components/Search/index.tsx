@@ -1,6 +1,12 @@
 import { SearchIcon } from "../../assets/svg";
 import { Flex } from "@chakra-ui/react";
-import { SearchBox, SearchButton, SearchText } from "../styles";
+import {
+  SearchBox,
+  SearchButton,
+  SearchForm,
+  SearchLabel,
+  SearchText,
+} from "../styles";
 
 interface Props {
   term: string;
@@ -16,12 +22,13 @@ const Searchbar = ({ term, setTerm }: Props) => {
     <Flex
       justifyContent="center"
       alignItems="center"
-      position="relative"
+      position="fixed"
       margin="auto"
+      top="-3.5rem"
     >
-      <form>
-        <Flex alignItems="center">
-          <label>Search movies</label>
+      <SearchForm>
+        <Flex alignItems="center" justifyContent="center">
+          <SearchLabel>Search movies</SearchLabel>
           <SearchBox>
             <SearchText
               type="text"
@@ -34,7 +41,7 @@ const Searchbar = ({ term, setTerm }: Props) => {
             </SearchButton>
           </SearchBox>
         </Flex>
-      </form>
+      </SearchForm>
     </Flex>
   );
 };

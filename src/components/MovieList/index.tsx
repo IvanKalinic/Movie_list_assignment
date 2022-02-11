@@ -27,11 +27,7 @@ const MovieList = (currentPage: { currentPage: number }) => {
   }, [currentPage, term]);
 
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="space-around"
-    >
+    <>
       <Search term={term} setTerm={setTerm} />
       <Flex
         alignItems="center"
@@ -52,7 +48,7 @@ const MovieList = (currentPage: { currentPage: number }) => {
           )
         )}
       </Flex>
-    </Flex>
+    </>
   );
 };
 
