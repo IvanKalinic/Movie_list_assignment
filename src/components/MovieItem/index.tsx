@@ -1,6 +1,8 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Flex, Text } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import DeleteModal from "../DeleteModal";
+
 import {
   MovieItemContainer,
   MovieImage,
@@ -17,11 +19,13 @@ interface Props {
 
 const MovieItem = (props: Props) => {
   const { name, url, year, id } = props;
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const navigate = useNavigate();
 
-  const handleDelete = () => {
-    //delete logic
-    //popup open
+  const handleDelete = (e: any) => {
+    e.stopPropagation();
+    onOpen();
   };
 
   const handleEdit = () => {
@@ -29,9 +33,9 @@ const MovieItem = (props: Props) => {
   };
 
   return (
-    <MovieItemContainer onClick={handleEdit}>
-      <MovieImage src={url} alt="" />
-      <PositionLeft>
+    <>
+      <MovieItemContainer onClick={handleEdit}>
+        <MovieImage src={url} alt="" />
         <Flex
           flexDirection="column"
           justifyContent="space-around"
@@ -44,10 +48,11 @@ const MovieItem = (props: Props) => {
         >
           <Flex alignItems="center" justifyContent="center" mt="1rem">
             <Text
+              position="relative"
               fontSize="1.1rem"
-              mt="1.8rem"
+              top="0.2rem"
+              left="-0.1rem"
               fontWeight="500"
-              maxWidth="14rem"
               style={{
                 textOverflow: "ellipsis",
                 overflow: "hidden",
@@ -63,8 +68,15 @@ const MovieItem = (props: Props) => {
             <DeleteIcon width="1.5rem" height="1.5rem" />
           </IconBottomRight>
         </Flex>
-      </PositionLeft>
-    </MovieItemContainer>
+      </MovieItemContainer>
+      <DeleteModal
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        id={id}
+        name={name}
+      />
+    </>
   );
 };
 

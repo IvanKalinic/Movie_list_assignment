@@ -2,6 +2,7 @@ import { Button, Flex } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useMovies } from "../../context/MoviesContext";
 import { useFindOneMovie, usePostMovie, usePutMovie } from "../../hooks";
@@ -21,6 +22,7 @@ interface Props {
 
 const MovieInput = (props: Props) => {
   const { edit, id } = props;
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -111,6 +113,10 @@ const MovieInput = (props: Props) => {
           Cancel
         </Button>
         <Button
+          isLoading={
+            postMovie.isLoading ||
+            !!queryClient.isFetching({ queryKey: "fetchMovies" })
+          }
           type="submit"
           width="100%"
           mt="4"
