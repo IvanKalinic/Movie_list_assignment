@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { useMovies } from "../../context/MoviesContext";
-import { useFindOneMovie, usePostMovie, usePutMovie } from "../../hooks";
-import { movieSchema } from "../../schemas/movieSchema";
-import { MovieForm } from "../../types";
-import { TextInput } from "../Input";
+import { useMovies } from "../../../context/MoviesContext";
+import { useFindOneMovie, usePostMovie, usePutMovie } from "../../../hooks";
+import { movieSchema } from "../../../schemas/movieSchema";
+import { MovieForm } from "../../../types";
+import { TextInput } from "../../Input";
 
 const defaultMovieValues = {
   title: "",

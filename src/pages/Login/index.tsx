@@ -8,7 +8,8 @@ import { LoginForm } from "../../types";
 import { useUser } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { LoginError } from "../../components";
 
 const defaultLoginValues = {
   email: "",
@@ -17,6 +18,7 @@ const defaultLoginValues = {
 };
 
 const Login = () => {
+  const [loginError, setLoginError] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -26,7 +28,6 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
     defaultValues: defaultLoginValues,
   });
-
   const { setUser, setJwt } = useUser();
   const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ const Login = () => {
       );
 
       if (response.data.user) {
+        setLoginError(false);
         if (loginForm.checked) {
           setUser({ user: response.data.user, jwt: response.data.jwt });
         } else {
@@ -48,12 +50,18 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err);
+      setLoginError(true);
     }
   };
 
   useEffect(() => {
     reset();
+    setLoginError(false);
   }, []);
+
+  useEffect(() => {
+    setLoginError(false);
+  }, [errors, register]);
 
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
@@ -82,11 +90,14 @@ const Login = () => {
           errors={errors}
           style={{ border: "none", width: "18.75rem", height: "2.8125rem" }}
         />
+        <div style={{ height: "1rem" }}>
+          {loginError && !errors.email && !errors.password && <LoginError />}
+        </div>
         <Flex
           alignItems="center"
           justifyContent="space-around"
           w="50%"
-          mt="-0.5rem"
+          mt="0.5rem"
           mb="0.5rem"
         >
           <Checkbox

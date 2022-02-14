@@ -1,14 +1,14 @@
 import { DeleteIcon } from "@chakra-ui/icons";
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "../DeleteModal";
+import DeleteModal from "../../DeleteModal";
 
 import {
   MovieItemContainer,
   MovieImage,
   PositionLeft,
   IconBottomRight,
-} from "../styles";
+} from "../../styles";
 
 interface Props {
   name: string;

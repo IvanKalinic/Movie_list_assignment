@@ -86,7 +86,11 @@ const Movies = () => {
 
         <Link to="/logout">
           <Flex alignItems="center" justifyContent="space-between">
-            <Text mr="1rem" fontWeight="600">
+            <Text
+              mr="1rem"
+              fontWeight="600"
+              css={{ "&:hover": { color: "#3b4c66" } }}
+            >
               Logout
             </Text>
             <Logout />

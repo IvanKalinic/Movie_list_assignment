@@ -1,10 +1,11 @@
 import Error from "./Error";
 import Logout from "./Logout";
-import MovieList from "./MovieList";
-import MovieFields from "./MovieFields";
-import MovieInput from "./MovieInput";
 import ImageUploader from "./ImageUploader";
 import DeleteModal from "./DeleteModal";
+import EmptyList from "./EmptyList";
+import LoginError from "./LoginError";
+
+import { MovieList, MovieFields, MovieInput } from "./MovieComponents";
 
 export {
   Error,
@@ -14,4 +15,6 @@ export {
   ImageUploader,
   MovieInput,
   DeleteModal,
+  EmptyList,
+  LoginError,
 };
