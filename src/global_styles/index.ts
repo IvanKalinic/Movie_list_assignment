@@ -6,5 +6,3 @@ export const Footer = styled.div`
   right: 0;
   bottom: 0;
 `;
-
-//add primary,secondary colors,margins etc.

@@ -55,7 +55,6 @@ const MovieInput = (props: Props) => {
       publicationYear: movieForm.publishingYear,
     };
 
-    console.log(movie);
     const formData = new FormData();
     formData.append("files.poster", image);
     formData.append("data", JSON.stringify(movie));

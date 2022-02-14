@@ -14,8 +14,8 @@ const MovieList = () => {
     maxItems,
     setMaxItems,
   } = useMovies();
-  const [term, setTerm] = useState<string>("");
 
+  const [term, setTerm] = useState<string>("");
   const [moviesOnPage, setMoviesOnPage] = useState<Array<any>>(
     movies.slice(0, maxItems)
   );

@@ -36,7 +36,6 @@ const Movies = () => {
   } = useMovies();
   const { data, isLoading } = useGetMovies();
 
-  console.log(isLoading);
   useEffect(() => {
     if (data) {
       setMovies(data.data);

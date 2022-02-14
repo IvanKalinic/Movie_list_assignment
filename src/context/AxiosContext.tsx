@@ -1,4 +1,4 @@
-import { createContext, createElement, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo } from "react";
 import Axios, { AxiosInstance } from "axios";
 import { useUser } from "./UserContext";
 
@@ -25,7 +25,6 @@ export const AxiosProvider = ({
     //request interceptor
     axios.interceptors.request.use((config) => {
       if (user && config.headers) {
-        console.log(jwt);
         config.headers.Authorization = `Bearer ${jwt || user.jwt}`;
       }
 

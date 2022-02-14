@@ -1,4 +1,4 @@
-import { FormHelperText, Input, InputProps, Text } from "@chakra-ui/react";
+import { Input, InputProps, Text } from "@chakra-ui/react";
 import { FieldValues, DeepMap, FieldError } from "react-hook-form";
 import { CustomInput } from "../../pages/styles";
 

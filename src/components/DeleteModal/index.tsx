@@ -25,9 +25,9 @@ const DeleteModal = ({ isOpen, onClose, id, name }: Props) => {
     useMovies();
   const deleteMovie = useDeleteMovie();
 
-  console.log(totalPages);
   const onSubmit = () => {
     deleteMovie.mutate(id, {
+      //if you are deleting last item on last page
       onSuccess: () => {
         if (
           movies?.length % maxItems === 1 &&
