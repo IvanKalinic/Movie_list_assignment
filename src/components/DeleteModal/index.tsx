@@ -9,7 +9,6 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { useQueryClient } from "react-query";
-import { MAX_ITEMS_ON_PAGE } from "../../const";
 import { useMovies } from "../../context/MoviesContext";
 import { useDeleteMovie } from "../../hooks";
 
@@ -22,13 +21,13 @@ interface Props {
 
 const DeleteModal = ({ isOpen, onClose, id, name }: Props) => {
   const queryClient = useQueryClient();
-  const { movies, setCurrentPage } = useMovies();
+  const { movies, setCurrentPage, maxItems } = useMovies();
   const deleteMovie = useDeleteMovie();
 
   const onSubmit = () => {
     deleteMovie.mutate(id, {
       onSuccess: () => {
-        if (movies?.length % MAX_ITEMS_ON_PAGE === 1)
+        if (movies?.length % maxItems === 1)
           setCurrentPage((currentPage) => currentPage - 1);
       },
     });

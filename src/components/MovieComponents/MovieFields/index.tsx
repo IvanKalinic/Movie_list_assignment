@@ -1,5 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import ImageUploader from "../../ImageUploader";
+import { AddEditWrapper } from "../../styles";
 import MovieInput from "../MovieInput";
 
 interface Props {
@@ -10,10 +11,10 @@ interface Props {
 const MovieFields = (props: Props) => {
   const { edit, id } = props;
   return (
-    <Flex alignItems="start">
+    <AddEditWrapper>
       <ImageUploader />
       <MovieInput edit={edit} id={id} />
-    </Flex>
+    </AddEditWrapper>
   );
 };
 

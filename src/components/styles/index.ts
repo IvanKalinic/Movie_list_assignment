@@ -21,7 +21,6 @@ export const UniversalWrapper = styled.section`
   }
 `;
 
-// width: 16.625rem;
 export const MovieItemContainer = styled.div`
   width: calc((50vw - 3rem) / 4);
   height: calc((75vh - 1rem) / 2);
@@ -38,6 +37,28 @@ export const MovieItemContainer = styled.div`
 
   &:nth-child(4n) {
     margin-right: 0rem;
+  }
+
+  @media only screen and (max-width: 80rem) {
+    &:nth-child(3n) {
+      margin-right: 0rem;
+    }
+    &:nth-child(4n) {
+      margin-right: 1rem;
+    }
+  }
+  @media only screen and (max-width: 70rem) {
+    &:nth-child(3n) {
+      margin-right: 1rem;
+    }
+    &:nth-child(2n) {
+      margin-right: 0rem;
+    }
+  }
+  @media only screen and (max-width: 45rem) {
+    &:nth-child(n) {
+      margin-right: 0rem;
+    }
   }
 `;
 
@@ -168,5 +189,101 @@ export const SearchForm = styled.form`
         }
       }
     }
+  }
+`;
+
+export const AddEditWrapper = styled.div`
+  display: flex;
+  @media only screen and (max-width: 60rem) {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left:5vw;
+
+    > * {
+      &:first-child {
+        width: 40vw;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        @media only screen and (max-width: 40rem) {
+          width:50vw;
+      }
+    }
+  }
+`;
+
+export const MovieListWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: 75vh;
+  flex-wrap: wrap;
+
+  @media only screen and (max-width: 80rem) {
+    > div {
+        width: 14vw;
+        > img{
+          width:92%;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 70rem) {
+    > div {
+        width: 23vw;
+        > img{
+          width:92%;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 45rem) {
+    > div {
+        width: 38vw;
+        > img{
+          width:94%;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 38rem) {
+    > div {
+        width: 44vw;
+        > img{
+          width:94%;
+        }
+      }
+    }
+  }
+`;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: auto;
+  top: -3.5rem;
+
+  @media only screen and (max-width: 85rem) {
+    position: absolute;
+    left: 15rem;
+  }
+  @media only screen and (max-width: 75rem) {
+    position: relative;
+    left: 13vw;
+    top: 0;
+  }
+  @media only screen and (max-width: 55rem) {
+    position: relative;
+    left: 5vw;
+    top: 0;
+  }
+  @media only screen and (max-width: 45rem) {
+    position: relative;
+    left: -6vw;
+    top: 0;
+    margin-top: 1rem;
   }
 `;

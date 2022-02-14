@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { decodeToken } from "react-jwt";
-import { LoginWrapper } from "../styles";
+import { LoginWrapper, Navbar } from "../styles";
 import { Add, Logout } from "../../assets/svg";
 import { useMovies } from "../../context/MoviesContext";
 import { MovieList } from "../../components";
 import Pagination from "../../pagination";
-import { MAX_ITEMS_ON_PAGE } from "../../const";
 import { useGetMovies } from "../../hooks";
 import { useQueryClient } from "react-query";
 import { Loader } from "../../components/Loader";
@@ -33,6 +32,7 @@ const Movies = () => {
     setFirstPageIndex,
     setCurrentPage,
     currentPage,
+    maxItems,
   } = useMovies();
   const { data, isLoading } = useGetMovies();
 
@@ -40,9 +40,9 @@ const Movies = () => {
   useEffect(() => {
     if (data) {
       setMovies(data.data);
-      if (movies) setTotalPages(Math.ceil(movies.length / MAX_ITEMS_ON_PAGE));
+      if (movies) setTotalPages(Math.ceil(movies.length / maxItems));
     }
-  }, [data, movies, jwt, user]);
+  }, [data, movies, jwt, user, maxItems]);
 
   useEffect(() => {
     queryClient.invalidateQueries("fetchMovies");
@@ -62,9 +62,9 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    setLastPageIndex(currentPage * MAX_ITEMS_ON_PAGE);
-    setFirstPageIndex(MAX_ITEMS_ON_PAGE * (currentPage - 1));
-  }, [currentPage, setCurrentPage]);
+    setLastPageIndex(currentPage * maxItems);
+    setFirstPageIndex(maxItems * (currentPage - 1));
+  }, [currentPage, setCurrentPage, maxItems]);
 
   const handleAdd = () => {
     navigate("/add");
@@ -72,12 +72,7 @@ const Movies = () => {
 
   return (
     <Flex justifyContent="center">
-      <Flex
-        justifyContent="space-between"
-        alignItems="center"
-        width="50vw"
-        mt="1rem"
-      >
+      <Navbar>
         <Flex alignItems="center" onClick={handleAdd} cursor="pointer">
           <Text fontWeight="600" fontSize="3rem" mr="1rem">
             My movies
@@ -97,7 +92,7 @@ const Movies = () => {
             <Logout />
           </Flex>
         </Link>
-      </Flex>
+      </Navbar>
       <LoginWrapper>{isLoading ? <Loader /> : <MovieList />}</LoginWrapper>
       <Pagination totalPages={totalPages} paginate={paginate} />
     </Flex>

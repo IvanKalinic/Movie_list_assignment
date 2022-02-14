@@ -10,6 +10,10 @@ export const LoginWrapper = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 99;
+
+  @media only screen and (max-width: 45rem) {
+    margin-top: 1rem;
+  }
 `;
 
 export const CustomInput = styled.div`
@@ -32,5 +36,35 @@ export const LinkWrapper = styled.div`
 
   &:hover {
     color: #3b4c66;
+  }
+`;
+
+export const ResponsiveText = styled.div`
+  @media only screen and (max-width: 60rem) {
+    margin-left: 5vw;
+    line-height: 2.2rem;
+  }
+`;
+
+export const Navbar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  margin-top: 1rem;
+
+  @media only screen and (max-width: 80rem) {
+    > * {
+      &:first-child {
+        > * {
+          &:first-child {
+            font-size:2rem;
+          }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 45rem) {
+    flex-direction:column;
   }
 `;

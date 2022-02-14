@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { MovieFields } from "../../components";
-import { LoginWrapper } from "../styles";
+import { LoginWrapper, ResponsiveText } from "../styles";
 
 const AddMovie = ({ edit }: { edit: boolean }) => {
   const { id } = useParams();
@@ -15,9 +15,11 @@ const AddMovie = ({ edit }: { edit: boolean }) => {
         width="50vw"
         height="75vh"
       >
-        <Text fontSize="3rem" fontWeight="600">
-          {edit ? "Edit" : "Create a new movie"}
-        </Text>
+        <ResponsiveText>
+          <Text fontSize="3rem" fontWeight="600">
+            {edit ? "Edit" : "Create a new movie"}
+          </Text>
+        </ResponsiveText>
         <MovieFields edit={edit} id={id} />
       </Flex>
     </LoginWrapper>

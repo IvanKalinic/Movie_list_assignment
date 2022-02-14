@@ -1,16 +1,23 @@
-import { Flex } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useLayoutEffect } from "react";
 import { useMovies } from "../../../context/MoviesContext";
 import MovieItem from "../MovieItem";
 import Search from "../../Search";
 import { EmptyList } from "../../index";
+import { MovieListWrapper } from "../../styles";
 
 const MovieList = () => {
-  const { movies, firstPageIndex, lastPageIndex, setCurrentPage, currentPage } =
-    useMovies();
+  const {
+    movies,
+    firstPageIndex,
+    lastPageIndex,
+    currentPage,
+    maxItems,
+    setMaxItems,
+  } = useMovies();
   const [term, setTerm] = useState<string>("");
+
   const [moviesOnPage, setMoviesOnPage] = useState<Array<any>>(
-    movies.slice(0, 8)
+    movies.slice(0, maxItems)
   );
 
   const findMovies = useCallback(
@@ -30,7 +37,31 @@ const MovieList = () => {
     );
   }, [currentPage, term, movies, firstPageIndex, lastPageIndex, findMovies]);
 
-  console.log(currentPage);
+  useLayoutEffect(() => {
+    const setMaxItemsOnPage = () => {
+      console.log(window.innerWidth);
+      if (window.innerWidth <= 80 * 16 && window.innerWidth > 70 * 16) {
+        setMaxItems(6);
+        return;
+      }
+      if (window.innerWidth <= 70 * 16 && window.innerWidth > 45 * 16) {
+        setMaxItems(4);
+        return;
+      }
+      if (window.innerWidth <= 45 * 16) {
+        setMaxItems(2);
+        return;
+      }
+      setMaxItems(8);
+    };
+    window.addEventListener("resize", setMaxItemsOnPage);
+
+    return () => {
+      window.removeEventListener("resize", setMaxItemsOnPage);
+    };
+  });
+
+  console.log(maxItems);
 
   return (
     <>
@@ -39,13 +70,7 @@ const MovieList = () => {
       ) : (
         <>
           <Search term={term} setTerm={setTerm} />
-          <Flex
-            alignItems="center"
-            justifyContent="center"
-            width="50vw"
-            height="75vh"
-            flexWrap="wrap"
-          >
+          <MovieListWrapper>
             {moviesOnPage.map(
               ({ attributes, id }: { attributes: any; id: number }) => (
                 <MovieItem
@@ -57,7 +82,7 @@ const MovieList = () => {
                 />
               )
             )}
-          </Flex>
+          </MovieListWrapper>
         </>
       )}
     </>

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
+import { MAX_ITEMS_ON_PAGE } from "../const";
 
 type ContextType = {
   movies: any;
@@ -11,6 +12,8 @@ type ContextType = {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   image: any;
   setImage: React.Dispatch<React.SetStateAction<any>>;
+  maxItems: number;
+  setMaxItems: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const MoviesContext = createContext<ContextType>({
@@ -24,6 +27,8 @@ const MoviesContext = createContext<ContextType>({
   setCurrentPage: () => null,
   image: null,
   setImage: () => null,
+  maxItems: 0,
+  setMaxItems: () => null,
 });
 
 export const useMovies = () => {
@@ -45,6 +50,7 @@ export const MoviesProvider = ({ children }: Props) => {
   const [lastPageIndex, setLastPageIndex] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [image, setImage] = useState<any>(null);
+  const [maxItems, setMaxItems] = useState<number>(MAX_ITEMS_ON_PAGE);
 
   const value = useMemo(
     () => ({
@@ -58,6 +64,8 @@ export const MoviesProvider = ({ children }: Props) => {
       setCurrentPage,
       image,
       setImage,
+      maxItems,
+      setMaxItems,
     }),
     [
       movies,
@@ -70,6 +78,8 @@ export const MoviesProvider = ({ children }: Props) => {
       setCurrentPage,
       image,
       setImage,
+      maxItems,
+      setMaxItems,
     ]
   );
 

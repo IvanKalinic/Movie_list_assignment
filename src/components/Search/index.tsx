@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/react";
 import {
   SearchBox,
   SearchButton,
+  SearchContainer,
   SearchForm,
   SearchLabel,
   SearchText,
@@ -19,13 +20,7 @@ const Searchbar = ({ term, setTerm }: Props) => {
   };
 
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      position="fixed"
-      margin="auto"
-      top="-3.5rem"
-    >
+    <SearchContainer>
       <SearchForm>
         <Flex alignItems="center" justifyContent="center">
           <SearchLabel>Search movies</SearchLabel>
@@ -42,7 +37,7 @@ const Searchbar = ({ term, setTerm }: Props) => {
           </SearchBox>
         </Flex>
       </SearchForm>
-    </Flex>
+    </SearchContainer>
   );
 };
 
