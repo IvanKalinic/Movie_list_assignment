@@ -13,7 +13,7 @@ export const LoginWrapper = styled.div`
 `;
 
 export const CustomInput = styled.div`
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background-color: #224957;
   outline: none;
   border: none;

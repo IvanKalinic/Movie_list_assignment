@@ -32,6 +32,7 @@ const MovieInput = (props: Props) => {
     resolver: zodResolver(movieSchema),
     defaultValues: defaultMovieValues,
   });
+
   const { image, setImage } = useMovies();
   const postMovie = usePostMovie();
   const putMovie = usePutMovie();
@@ -43,7 +44,7 @@ const MovieInput = (props: Props) => {
     if (data) {
       reset({
         title: data.data.attributes.name,
-        publishingYear: data.data.attributes.publicationYear,
+        publishingYear: String(data.data.attributes.publicationYear),
       });
     }
   }, [data]);
@@ -54,6 +55,7 @@ const MovieInput = (props: Props) => {
       publicationYear: movieForm.publishingYear,
     };
 
+    console.log(movie);
     const formData = new FormData();
     formData.append("files.poster", image);
     formData.append("data", JSON.stringify(movie));
@@ -106,7 +108,7 @@ const MovieInput = (props: Props) => {
           width="100%"
           mt="4"
           variant="outline"
-          borderRadius="10px"
+          borderRadius="0.625rem"
           height="3.375rem"
           mr="1rem"
         >
@@ -115,13 +117,14 @@ const MovieInput = (props: Props) => {
         <Button
           isLoading={
             postMovie.isLoading ||
+            putMovie.isLoading ||
             !!queryClient.isFetching({ queryKey: "fetchMovies" })
           }
           type="submit"
           width="100%"
           mt="4"
           backgroundColor="#2BD17E"
-          borderRadius="10px"
+          borderRadius="0.625rem"
           height="3.375rem"
         >
           {!edit ? "Submit" : "Update"}

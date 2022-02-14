@@ -2,13 +2,9 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { Flex, Text, useDisclosure } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../DeleteModal";
+import DefaultImg from "../../../assets/img/movie.png";
 
-import {
-  MovieItemContainer,
-  MovieImage,
-  PositionLeft,
-  IconBottomRight,
-} from "../../styles";
+import { MovieItemContainer, MovieImage, IconBottomRight } from "../../styles";
 
 interface Props {
   name: string;
@@ -35,23 +31,25 @@ const MovieItem = (props: Props) => {
   return (
     <>
       <MovieItemContainer onClick={handleEdit}>
-        <MovieImage src={url} alt="" />
+        <MovieImage src={url || DefaultImg} alt="" />
         <Flex
-          flexDirection="column"
           justifyContent="space-around"
-          alignItems="start"
-          height="4rem"
-          position="relative"
-          bottom="0"
-          left="10%"
           width="100%"
+          position="relative"
+          left="1rem"
+          top="0.5rem"
+          height="4rem"
+          mb="0.8rem"
         >
-          <Flex alignItems="center" justifyContent="center" mt="1rem">
+          <Flex
+            alignItems="flex-start"
+            justifyContent="space-around"
+            flexDirection="column"
+            width="100%"
+            height="100%"
+          >
             <Text
-              position="relative"
               fontSize="1.1rem"
-              top="0.2rem"
-              left="-0.1rem"
               fontWeight="500"
               style={{
                 textOverflow: "ellipsis",
@@ -60,22 +58,20 @@ const MovieItem = (props: Props) => {
             >
               {name}
             </Text>
+            <Text fontSize="0.7rem" mt="0.5rem">
+              {year}
+            </Text>
           </Flex>
-          <Text fontSize="0.7rem" mt="0.5rem">
-            {year}
-          </Text>
           <IconBottomRight onClick={handleDelete}>
-            <DeleteIcon width="1.5rem" height="1.5rem" />
+            <DeleteIcon
+              width="1.5rem"
+              height="1.5rem"
+              css={{ "&:hover": { color: "#8c3103" } }}
+            />
           </IconBottomRight>
         </Flex>
       </MovieItemContainer>
-      <DeleteModal
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-        id={id}
-        name={name}
-      />
+      <DeleteModal isOpen={isOpen} onClose={onClose} id={id} name={name} />
     </>
   );
 };

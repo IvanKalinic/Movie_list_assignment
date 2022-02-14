@@ -23,7 +23,7 @@ export const TextInput = (props: Props) => {
         {...styleProps}
         _placeholder={{ color: "white" }}
       />
-      <Text color="red" mt="0.25rem">
+      <Text color="red" mt="0.25rem" position="absolute">
         {errors[registerName]?.message}
       </Text>
     </CustomInput>

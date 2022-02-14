@@ -17,8 +17,10 @@ const Pagination = ({ totalPages, paginate }: Props) => {
 
   return (
     <PaginationWrapper>
-      <Flex justifyContent="space-around" alignItems="center" width="12vw">
-        <Text fontWeight="600">Prev</Text>
+      <Flex justifyContent="space-around" alignItems="center" maxWidth="20vw">
+        <Text fontWeight="600" mr="1rem">
+          Prev
+        </Text>
         {pages.map((num) => (
           <Button
             key={num}
@@ -26,6 +28,7 @@ const Pagination = ({ totalPages, paginate }: Props) => {
             bg={currentPage === num ? "#2BD17E" : "#092c39"}
             w="2rem"
             h="2rem"
+            mr="0.5rem"
             css={{
               "&:hover": {
                 backgroundColor: "#2BD17E",
@@ -35,7 +38,9 @@ const Pagination = ({ totalPages, paginate }: Props) => {
             {num}
           </Button>
         ))}
-        <Text fontWeight="600">Next</Text>
+        <Text fontWeight="600" ml="0.5rem">
+          Next
+        </Text>
       </Flex>
     </PaginationWrapper>
   );

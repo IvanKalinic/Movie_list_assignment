@@ -103,7 +103,7 @@ const Login = () => {
           <Checkbox
             backgroundColor="#224957"
             borderColor="#224957"
-            borderRadius="10px"
+            borderRadius="0.625rem"
             {...register("checked")}
           />
           <Text>Remember me</Text>
@@ -113,7 +113,7 @@ const Login = () => {
           width="100%"
           mt="4"
           backgroundColor="#2BD17E"
-          borderRadius="10px"
+          borderRadius="0.625rem"
           height="3.375rem"
         >
           Login

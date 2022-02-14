@@ -11,6 +11,7 @@ import Pagination from "../../pagination";
 import { MAX_ITEMS_ON_PAGE } from "../../const";
 import { useGetMovies } from "../../hooks";
 import { useQueryClient } from "react-query";
+import { Loader } from "../../components/Loader";
 
 interface JwtToken {
   id: number;
@@ -33,14 +34,15 @@ const Movies = () => {
     setCurrentPage,
     currentPage,
   } = useMovies();
-  const response = useGetMovies();
+  const { data, isLoading } = useGetMovies();
 
+  console.log(isLoading);
   useEffect(() => {
-    if (response.data) {
-      setMovies(response.data.data);
+    if (data) {
+      setMovies(data.data);
       if (movies) setTotalPages(Math.ceil(movies.length / MAX_ITEMS_ON_PAGE));
     }
-  }, [response, movies, jwt, user]);
+  }, [data, movies, jwt, user]);
 
   useEffect(() => {
     queryClient.invalidateQueries("fetchMovies");
@@ -96,13 +98,7 @@ const Movies = () => {
           </Flex>
         </Link>
       </Flex>
-      <LoginWrapper>
-        {!movies ? (
-          <Heading>No movies in your list</Heading>
-        ) : (
-          <MovieList currentPage={currentPage} />
-        )}
-      </LoginWrapper>
+      <LoginWrapper>{isLoading ? <Loader /> : <MovieList />}</LoginWrapper>
       <Pagination totalPages={totalPages} paginate={paginate} />
     </Flex>
   );

@@ -5,8 +5,9 @@ import MovieItem from "../MovieItem";
 import Search from "../../Search";
 import { EmptyList } from "../../index";
 
-const MovieList = (currentPage: { currentPage: number }) => {
-  const { movies, firstPageIndex, lastPageIndex } = useMovies();
+const MovieList = () => {
+  const { movies, firstPageIndex, lastPageIndex, setCurrentPage, currentPage } =
+    useMovies();
   const [term, setTerm] = useState<string>("");
   const [moviesOnPage, setMoviesOnPage] = useState<Array<any>>(
     movies.slice(0, 8)
@@ -14,18 +15,22 @@ const MovieList = (currentPage: { currentPage: number }) => {
 
   const findMovies = useCallback(
     (term) => {
-      return movies?.filter((movie: any) =>
-        movie.attributes.name.toUpperCase().includes(term.toUpperCase())
-      );
+      return movies
+        ?.filter((movie: any) =>
+          movie.attributes.name.toUpperCase().includes(term.toUpperCase())
+        )
+        .slice(firstPageIndex, lastPageIndex);
     },
-    [term]
+    [term, firstPageIndex, lastPageIndex]
   );
 
   useEffect(() => {
     setMoviesOnPage(
       term ? findMovies(term) : movies.slice(firstPageIndex, lastPageIndex)
     );
-  }, [currentPage, term]);
+  }, [currentPage, term, movies, firstPageIndex, lastPageIndex, findMovies]);
+
+  console.log(currentPage);
 
   return (
     <>

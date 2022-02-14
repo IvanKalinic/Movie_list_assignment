@@ -33,8 +33,8 @@ export const Add = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
+      x="0"
+      y="0"
       viewBox="0 0 251.882 251.882"
       xmlSpace="preserve"
       width="2rem"
@@ -52,8 +52,8 @@ export const Upload = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
+      x="0"
+      y="0"
       viewBox="0 0 330 330"
       xmlSpace="preserve"
       fill="white"
