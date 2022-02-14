@@ -34,6 +34,7 @@ export const MovieItemContainer = styled.div`
   background-color: #092c39;
   margin-bottom: 1rem;
   color: white;
+  cursor: pointer;
 
   &:nth-child(4n) {
     margin-right: 0rem;

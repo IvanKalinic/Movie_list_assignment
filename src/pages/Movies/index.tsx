@@ -1,10 +1,9 @@
 import { Heading, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAxios } from "../../context/AxiosContext";
 import { useUser } from "../../context/UserContext";
 import { decodeToken } from "react-jwt";
-import { LinkWrapper, LoginWrapper } from "../styles";
+import { LoginWrapper } from "../styles";
 import { Add, Logout } from "../../assets/svg";
 import { useMovies } from "../../context/MoviesContext";
 import { MovieList } from "../../components";

@@ -11,7 +11,7 @@ const MovieList = (currentPage: { currentPage: number }) => {
   const [moviesOnPage, setMoviesOnPage] = useState<Array<any>>(
     movies.slice(0, 8)
   );
-  console.log(movies);
+
   const findMovies = useCallback(
     (term) => {
       return movies?.filter((movie: any) =>

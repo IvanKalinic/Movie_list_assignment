@@ -5,6 +5,7 @@ import { LoginWrapper } from "../styles";
 
 const AddMovie = ({ edit }: { edit: boolean }) => {
   const { id } = useParams();
+
   return (
     <LoginWrapper>
       <Flex

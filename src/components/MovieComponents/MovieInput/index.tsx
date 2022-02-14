@@ -1,6 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
@@ -41,13 +41,12 @@ const MovieInput = (props: Props) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       reset({
         title: data.data.attributes.name,
         publishingYear: data.data.attributes.publicationYear,
       });
     }
-  }, [id]);
+  }, [data]);
 
   const handleAddMovie = async (movieForm: MovieForm) => {
     const movie = {
@@ -58,6 +57,7 @@ const MovieInput = (props: Props) => {
     const formData = new FormData();
     formData.append("files.poster", image);
     formData.append("data", JSON.stringify(movie));
+
     if (edit) {
       putMovie.mutate({ id, formData });
     } else {

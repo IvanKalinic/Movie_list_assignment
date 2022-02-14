@@ -27,7 +27,6 @@ const ImageUploader = () => {
     setCurrentImage("");
   }, []);
 
-  console.log(currentImage);
   return (
     <UploadBoxWrapper image={currentImage}>
       {!image ? (

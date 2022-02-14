@@ -1,4 +1,5 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const EmptyList = () => {
   return (
@@ -7,7 +8,7 @@ const EmptyList = () => {
         Your movie list is empty
       </Text>
       <Button backgroundColor="#2BD17E" borderRadius="10px" height="3.375rem">
-        Add a new movie
+        <Link to="/add">Add a new movie</Link>
       </Button>
     </Flex>
   );
