@@ -39,7 +39,6 @@ const MovieList = () => {
 
   useLayoutEffect(() => {
     const setMaxItemsOnPage = () => {
-      console.log(window.innerWidth);
       if (window.innerWidth <= 80 * 16 && window.innerWidth > 70 * 16) {
         setMaxItems(6);
         return;
@@ -48,7 +47,7 @@ const MovieList = () => {
         setMaxItems(4);
         return;
       }
-      if (window.innerWidth <= 45 * 16) {
+      if (window.innerWidth <= 49 * 16) {
         setMaxItems(2);
         return;
       }
@@ -60,8 +59,6 @@ const MovieList = () => {
       window.removeEventListener("resize", setMaxItemsOnPage);
     };
   });
-
-  console.log(maxItems);
 
   return (
     <>

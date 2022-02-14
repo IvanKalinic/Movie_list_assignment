@@ -36,7 +36,24 @@ export const MovieItemContainer = styled.div`
   cursor: pointer;
 
   &:nth-child(4n) {
-    margin-right: 0rem;
+    margin-right: 0;
+  }
+
+  @media only screen and (max-width: 90rem) {
+    &:nth-child(4n) {
+      margin-right: 1rem;
+    }
+    > * {
+      &:nth-child(2n) {
+        > * {
+          &:first-child {
+            > * {
+              &:first-child{
+                margin-left:-0.5rem;
+              }
+            }
+          }
+        }
   }
 
   @media only screen and (max-width: 80rem) {
@@ -46,11 +63,9 @@ export const MovieItemContainer = styled.div`
     &:nth-child(4n) {
       margin-right: 1rem;
     }
-  }
+  };
+
   @media only screen and (max-width: 70rem) {
-    &:nth-child(3n) {
-      margin-right: 1rem;
-    }
     &:nth-child(2n) {
       margin-right: 0rem;
     }
@@ -62,7 +77,6 @@ export const MovieItemContainer = styled.div`
   }
 `;
 
-// width: 15.625rem;
 export const MovieImage = styled.img`
   margin-top: 0.5rem;
   object-fit: cover;
@@ -264,7 +278,7 @@ export const SearchContainer = styled.div`
   justify-content: center;
   position: fixed;
   margin: auto;
-  top: -3.5rem;
+  top: -8vh;
 
   @media only screen and (max-width: 85rem) {
     position: absolute;

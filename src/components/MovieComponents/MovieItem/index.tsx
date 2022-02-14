@@ -53,7 +53,7 @@ const MovieItem = (props: Props) => {
               fontWeight="500"
               style={{
                 textOverflow: "ellipsis",
-                overflow: "hidden",
+                overflowY: "hidden",
               }}
             >
               {name}

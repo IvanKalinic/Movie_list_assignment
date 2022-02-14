@@ -21,13 +21,19 @@ interface Props {
 
 const DeleteModal = ({ isOpen, onClose, id, name }: Props) => {
   const queryClient = useQueryClient();
-  const { movies, setCurrentPage, maxItems } = useMovies();
+  const { movies, setCurrentPage, maxItems, currentPage, totalPages } =
+    useMovies();
   const deleteMovie = useDeleteMovie();
 
+  console.log(totalPages);
   const onSubmit = () => {
     deleteMovie.mutate(id, {
       onSuccess: () => {
-        if (movies?.length % maxItems === 1)
+        if (
+          movies?.length % maxItems === 1 &&
+          currentPage !== 1 &&
+          currentPage === totalPages
+        )
           setCurrentPage((currentPage) => currentPage - 1);
       },
     });

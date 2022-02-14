@@ -14,6 +14,8 @@ type ContextType = {
   setImage: React.Dispatch<React.SetStateAction<any>>;
   maxItems: number;
   setMaxItems: React.Dispatch<React.SetStateAction<number>>;
+  totalPages: number;
+  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const MoviesContext = createContext<ContextType>({
@@ -29,6 +31,8 @@ const MoviesContext = createContext<ContextType>({
   setImage: () => null,
   maxItems: 0,
   setMaxItems: () => null,
+  totalPages: 0,
+  setTotalPages: () => null,
 });
 
 export const useMovies = () => {
@@ -51,6 +55,7 @@ export const MoviesProvider = ({ children }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [image, setImage] = useState<any>(null);
   const [maxItems, setMaxItems] = useState<number>(MAX_ITEMS_ON_PAGE);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   const value = useMemo(
     () => ({
@@ -66,6 +71,8 @@ export const MoviesProvider = ({ children }: Props) => {
       setImage,
       maxItems,
       setMaxItems,
+      totalPages,
+      setTotalPages,
     }),
     [
       movies,
@@ -80,6 +87,8 @@ export const MoviesProvider = ({ children }: Props) => {
       setImage,
       maxItems,
       setMaxItems,
+      totalPages,
+      setTotalPages,
     ]
   );
 

@@ -1,5 +1,5 @@
-import { Heading, Flex, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Flex, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { decodeToken } from "react-jwt";
@@ -19,13 +19,13 @@ interface JwtToken {
 }
 
 const Movies = () => {
-  const [totalPages, setTotalPages] = useState<number>(0);
-
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const { user, setUser, jwt } = useUser();
   const {
+    totalPages,
+    setTotalPages,
     movies,
     setMovies,
     setLastPageIndex,
